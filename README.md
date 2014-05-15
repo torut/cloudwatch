@@ -28,6 +28,27 @@ MySQL のスレッド数をチェックするカスタムメトリクスです�
     MySQL User で指定したユーザーのパスワード<br />
 	パスワードが不要の場合は -p も含めて削除してください。
 
+### 利用方法
+```
+$ cd /home/ec2-user/bin
+$ git clone git://github.com/torut/cloudwatch.git
+$ cd ./cloudwatch
+$ cp ./credential.example ./credential
+$ vi ./credential
+  AWS AccessKey, SecretKey を設定します。
+$ chmod 600 ./credential
+  他のユーザーから参照されないように読み込み権限を変更します。
+$ vi ./bin/mysql-thead.sh
+  AWS_CREDENTIAL_PATH, REGION, mysqladmin_cmd, mysqladmin_opt などを設定します。
+$ chmod 700 ./bin/mysql-thread.sh
+  他のユーザーから MySQL のパスワードを参照されないように読み込み権限を変更します。
+$ ./bin/mysql-thread.sh
+  AWS Management Console の CloudWatch のところで Custom Metrics の MySQL にデータが登録されているか確認して下さい。
+$ crontab -e
+> */5 * * * * ~/bin/cloudwatch/bin/mysql-thread.sh
+  crontab に5分毎に実行するように設定します。
+```
+
 ## 連絡先
 Issue: [GitHub](https://github.com/torut/cloudwatch/issues)
 
