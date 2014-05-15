@@ -2,7 +2,9 @@
 
 自作カスタムメトリクス集
 
-## mysql-thread.sh
+注意: スクリプト中のパスは Amazon Linux のものとなっています。CentOS など他の OS で利用される場合は適時修正してご利用ください。
+
+## [mysql-thread.sh](https://github.com/torut/cloudwatch/blob/master/bin/mysql-thread.sh)
 
 MySQL のスレッド数をチェックするカスタムメトリクスです。
 仕組み的には mysqladmin status を実行してそこからスレッド数を取得します。
@@ -25,6 +27,10 @@ MySQL のスレッド数をチェックするカスタムメトリクスです�
   * MySQL User Password<br />
     MySQL User で指定したユーザーのパスワード<br />
 	パスワードが不要の場合は -p も含めて削除してください。
+
+## 連絡先
+Issue: [GitHub](https://github.com/torut/cloudwatch/issues)
+
 
 ## 参考資料
 ### リージョンリスト
