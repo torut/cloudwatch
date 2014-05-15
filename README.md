@@ -9,21 +9,21 @@ MySQL のスレッド数をチェックするカスタムメトリクスです�
 
 ### 設定項目
 
-* AWS_CREDENTIAL_FILE
-  AWS の AccessKey と SecretKey を記載したファイルの path
+* AWS_CREDENTIAL_FILE<br />
+  AWS の AccessKey と SecretKey を記載したファイルの path<br />
   credential.example を credential にリネームして必要な箇所を書き換えてください。
-* AWS_REGION
-  インスタンスがあるリージョン
-  東京リージョンなら ap-northeast-1 です。
+* AWS_REGION<br />
+  インスタンスがあるリージョン<br />
+  東京リージョンなら ap-northeast-1 です。<br />
   それ以外の場合は下記の参考資料を参考に書き換えてください。
-* mysqladmin_cmd
+* mysqladmin_cmd<br />
   mysqladmin コマンドの path
-* mysqladmin_opt
+* mysqladmin_opt<br />
   mysqladmin コマンドのオプション
-  * MySQL User
+  * MySQL User<br />
     MySQL のユーザー
-  * MySQL User Password
-    MySQL User で指定したユーザーのパスワード
+  * MySQL User Password<br />
+    MySQL User で指定したユーザーのパスワード<br />
 	パスワードが不要の場合は -p も含めて削除してください。
 
 ## 参考資料
