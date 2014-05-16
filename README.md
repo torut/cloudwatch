@@ -4,12 +4,23 @@
 
 注意: スクリプト中のパスは Amazon Linux のものとなっています。CentOS など他の OS で利用される場合は適時修正してご利用ください。
 
-## [mysql-thread.sh](https://github.com/torut/cloudwatch/blob/master/bin/mysql-thread.sh)
+## 事前準備
+```
+$ cd /home/ec2-user/bin
+$ git clone git://github.com/torut/cloudwatch.git
+$ cd ./cloudwatch
+$ cp ./credential.example ./credential
+$ vi ./credential
+  AWS AccessKey, SecretKey を設定します。
+$ chmod 600 ./credential
+  他のユーザーから参照されないように読み込み権限を変更します。
+$ vi ./.aws_profile
+  下記の共通設定を参考に設定します。
+```
 
-MySQL のスレッド数をチェックするカスタムメトリクスです。
-仕組み的には mysqladmin status を実行してそこからスレッド数を取得します。
+### 共通設定ファイル [.aws_profile](https://github.com/torut/cloudwatch/blob/master/.aws_profile)
 
-### 設定項目
+このファイル内に以下の設定を行います。
 
 * AWS_CREDENTIAL_FILE<br />
   AWS の AccessKey と SecretKey を記載したファイルの path<br />
@@ -18,6 +29,14 @@ MySQL のスレッド数をチェックするカスタムメトリクスです�
   インスタンスがあるリージョン<br />
   東京リージョンなら ap-northeast-1 です。<br />
   それ以外の場合は下記の参考資料を参考に書き換えてください。
+
+## [mysql-thread.sh](https://github.com/torut/cloudwatch/blob/master/bin/mysql-thread.sh)
+
+MySQL のスレッド数をチェックするカスタムメトリクスです。
+仕組み的には mysqladmin status を実行してそこからスレッド数を取得します。
+
+### 設定項目
+
 * mysqladmin_cmd<br />
   mysqladmin コマンドの path
 * mysqladmin_opt<br />
@@ -30,16 +49,8 @@ MySQL のスレッド数をチェックするカスタムメトリクスです�
 
 ### 利用方法
 ```
-$ cd /home/ec2-user/bin
-$ git clone git://github.com/torut/cloudwatch.git
-$ cd ./cloudwatch
-$ cp ./credential.example ./credential
-$ vi ./credential
-  AWS AccessKey, SecretKey を設定します。
-$ chmod 600 ./credential
-  他のユーザーから参照されないように読み込み権限を変更します。
 $ vi ./bin/mysql-thead.sh
-  AWS_CREDENTIAL_PATH, AWS_REGION, mysqladmin_cmd, mysqladmin_opt などを設定します。
+  mysqladmin_cmd, mysqladmin_opt などを設定します。
 $ chmod 700 ./bin/mysql-thread.sh
   他のユーザーから MySQL のパスワードを参照されないように読み込み権限を変更します。
 $ ./bin/mysql-thread.sh
@@ -56,13 +67,6 @@ Nginx の接続数をチェックするカスタムメトリクスです。
 
 ### 設定項目
 
-* AWS_CREDENTIAL_FILE<br />
-  AWS の AccessKey と SecretKey を記載したファイルの path<br />
-  credential.example を credential にリネームして必要な箇所を書き換えてください。
-* AWS_REGION<br />
-  インスタンスがあるリージョン<br />
-  東京リージョンなら ap-northeast-1 です。<br />
-  それ以外の場合は下記の参考資料を参考に書き換えてください。
 * nginx_status_url<br />
   Nginx status の URL
 
@@ -87,16 +91,8 @@ location /status {
 
 ### 利用方法
 ```
-$ cd /home/ec2-user/bin
-$ git clone git://github.com/torut/cloudwatch.git
-$ cd ./cloudwatch
-$ cp ./credential.example ./credential
-$ vi ./credential
-  AWS AccessKey, SecretKey を設定します。
-$ chmod 600 ./credential
-  他のユーザーから参照されないように読み込み権限を変更します。
 $ vi ./bin/nginx-active_connection.sh
-  AWS_CREDENTIAL_PATH, AWS_REGION, nginx_status_url などを設定します。
+  nginx_status_url などを設定します。
 $ chmod 700 ./bin/nginx-active_connection.sh
   他のユーザーから 参照されないように読み込み権限を変更します。
 $ ./bin/nginx-active_status.sh
