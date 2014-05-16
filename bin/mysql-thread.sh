@@ -1,15 +1,9 @@
 #!/bin/bash
 
-export AWS_CREDENTIAL_FILE=[Credential File Path]
-export AWS_REGION=[Region]
+source `dirname $0`/../.aws_profile
+
 mysqladmin_cmd=/usr/bin/mysqladmin
 mysqladmin_opt="-u [MySQL User] -p[MySQL User Password]"
-
-export JAVA_HOME=/usr/lib/jvm/jre
-export AWS_CLOUDWATCH_HOME=/opt/aws/apitools/mon
-export AWS_CLOUDWATCH_URL=https://monitoring.${AWS_REGION}.amazonaws.com
-export PATH=$PATH:$HOME/bin:$AWS_CLOUDWATCH_HOME/bin
-instanceid=`curl -s http://169.254.169.254/latest/meta-data/instance-id`
 
 mysqladmin_status_cmd="${mysqladmin_cmd} ${mysqladmin_opt} status"
 
