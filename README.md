@@ -74,7 +74,7 @@ Nginx の接続数をチェックするカスタムメトリクスです。
 
 Nginx で http_stub_status が有効なことを確認して下さい。
 `$ /usr/sbin/nginx -V`
-で表示される configure arguments に **--with-http\_stub\_status** が含まれていることを確認して下さい。
+で表示される configure arguments に **--with-http\_stub\_status\_module** が含まれていることを確認して下さい。
 
 nginx.conf で status の設定
 下記の例だと http://localhost/stauts でアクセスできるようになります。
