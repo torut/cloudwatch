@@ -29,6 +29,11 @@ $ vi ./.aws_profile
   インスタンスがあるリージョン<br />
   東京リージョンなら ap-northeast-1 です。<br />
   それ以外の場合は下記の参考資料を参考に書き換えてください。
+* instanceid<br />
+  このスクリプトを設置するサーバのインスタンスID
+  ターミナル上で次のコマンドを打つとそのサーバのインスタンスIDを簡単に取得できます。
+  `$ curl -s http://169.254.169.254/latest/meta-data/instance-id`
+
 
 ## [mysql-thread.sh](https://github.com/torut/cloudwatch/blob/master/bin/mysql-thread.sh)
 
