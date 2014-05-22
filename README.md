@@ -30,8 +30,8 @@ $ vi ./.aws_profile
   東京リージョンなら ap-northeast-1 です。<br />
   それ以外の場合は下記の参考資料を参考に書き換えてください。
 * instanceid<br />
-  このスクリプトを設置するサーバのインスタンスID
-  ターミナル上で次のコマンドを打つとそのサーバのインスタンスIDを簡単に取得できます。
+  このスクリプトを設置するサーバのインスタンスID<br />
+  ターミナル上で次のコマンドを打つとそのサーバのインスタンスIDを簡単に取得できます。<br />
   `$ curl -s http://169.254.169.254/latest/meta-data/instance-id`
 
 
@@ -82,7 +82,7 @@ Nginx で http_stub_status が有効なことを確認して下さい。
 で表示される configure arguments に **--with-http\_stub\_status\_module** が含まれていることを確認して下さい。
 
 nginx.conf で status の設定
-下記の例だと http://localhost/stauts でアクセスできるようになります。
+下記の例だと http://localhost/status でアクセスできるようになります。
 ```
 location /status {
     stub_status on;
